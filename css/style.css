@@ -30,9 +30,27 @@ img {
     display: none;
 }
 
-.active{
-    display: block;
+
+
+p{
+    display: none;
+    text-align: right;
+    color: black;
+    font-weight: bolder;
+    font-size: 15px;
+    position: absolute;
+    bottom: 15px;
+    right: 10px;
+    left: 10px;
+    background-color: rgba(211, 211, 211, 0.4);
 }
+
+
+
+.active{
+    display: inline-block;
+}
+
 
 .prev:after{
     text-align: center;
