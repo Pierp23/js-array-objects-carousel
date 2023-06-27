@@ -24,6 +24,7 @@ const images = [
 
 const imgContainer = document.querySelector('.img-container');
 const textContainer = document.querySelector('.text-container');
+const thumbnailsContainer = document.querySelector('.thumbnails-container');
 
 const prev = document.querySelector('.prev');
 const next = document.querySelector('.next');
@@ -33,9 +34,9 @@ const next = document.querySelector('.next');
 for (let i = 0; i < images.length; i++){
     const img = document.createElement('img');
     img.src = images[i].image;
-    
-    const textDiv = document.createElement('p');
+    img.classList.add('photo');
 
+    const textDiv = document.createElement('p');
     textDiv.innerHTML = images[i].title + '<br>' + images[i].text;
 
     imgContainer.append(img);
@@ -48,10 +49,22 @@ for (let i = 0; i < images.length; i++){
     }
 }
 
+for (let i = 0; i < images.length; i++){
+    const thumbnails  = document.createElement('img');
+    thumbnails.src = images[i].image;
+    thumbnails.classList.add('active');
+    thumbnails.classList.add('thumbnails');
+    thumbnailsContainer.append(thumbnails);
+    if(i == 0){
+        thumbnails.classList.add('active', 'highlights');
+    }
+}
+
 let currentImg = 0;
 
-const allImg = document.querySelectorAll('img');
+const allImg = document.querySelectorAll('.photo');
 const allText = document.querySelectorAll('p');
+const allThumbnails = document.querySelectorAll('.thumbnails');
 
 
 prev.addEventListener('click',
@@ -59,16 +72,20 @@ prev.addEventListener('click',
         if(currentImg > 0){
             allImg[currentImg].classList.remove('active');
             allText[currentImg].classList.remove('active');
+            allThumbnails[currentImg].classList.remove('highlights');
             currentImg--;
             allImg[currentImg].classList.add('active');
             allText[currentImg].classList.add('active');
+            allThumbnails[currentImg].classList.add('highlights')
         }
         else if(currentImg == 0){
             allImg[currentImg].classList.remove('active');
             allText[currentImg].classList.remove('active');
+            allThumbnails[currentImg].classList.remove('highlights')
             currentImg = allImg.length - 1;
             allImg[currentImg].classList.add('active');
             allText[currentImg].classList.add('active');
+            allThumbnails[currentImg].classList.add('highlights')
         }
     
     }
@@ -79,18 +96,23 @@ next.addEventListener('click',
         if(currentImg < allImg.length - 1){
         allImg[currentImg].classList.remove('active');
         allText[currentImg].classList.remove('active');
+        allThumbnails[currentImg].classList.remove('highlights');
         currentImg++;
         allImg[currentImg].classList.add('active');
         allText[currentImg].classList.add('active');
+        allThumbnails[currentImg].classList.add('highlights');
         }
         else if(currentImg == allImg.length - 1){
         
         allImg[currentImg].classList.remove('active');
         allText[currentImg].classList.remove('active');
+        allThumbnails[currentImg].classList.remove('highlights');
         currentImg = 0;
         allImg[currentImg].classList.add('active');
-        allText[currentImg].classList.add('active');   
+        allText[currentImg].classList.add('active');
+        allThumbnails[currentImg].classList.add('highlights'); 
         }
 
     }
 )
+
