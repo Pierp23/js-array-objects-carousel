@@ -6,3 +6,55 @@
 }
 
 /* GENERAL */
+body{
+    height: 100vh;
+}
+
+.container{
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.img-container{
+    width: 600px;
+    height: 300px;
+    position: relative;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}
+
+.active{
+    display: block;
+}
+
+.prev:after{
+    text-align: center;
+    background-color: grey;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    color: red;
+    content: 'X';
+    position: absolute;
+    left: 50%;
+}
+
+.next:before{
+    text-align: center;
+    background-color: grey;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    color: red;
+    content: 'X';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+}
